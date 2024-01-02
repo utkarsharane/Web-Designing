@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+</head>
+<body>
+    <h1>Login Page</h1>
+    <form id="loginForm">
+        <label for="loginUsername">Username:</label>
+        <input type="text" id="loginUsername" name="loginUsername" required><br><br>
+        <label for="loginPassword">Password:</label>
+        <input type="password" id="loginPassword" name="loginPassword" required><br><br>
+        <input type="submit" value="Login">
+        <input type="reset" value="Reset">
+    </form>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Get the values of the entered username and password
+            var enteredUsername = document.getElementById("loginUsername").value;
+            var enteredPassword = document.getElementById("loginPassword").value;
+
+            // Retrieve the stored username and password from localStorage (for demonstration purposes)
+            var storedUsername = localStorage.getItem("username");
+            var storedPassword = localStorage.getItem("password");
+
+            // Check if the entered username and password match the stored values
+            if (enteredUsername === storedUsername && enteredPassword === storedPassword) {
+                alert("Login successful!");
+                window.location.href="bank.html"
+            } else {
+                alert("Login failed. Please check your credentials.");
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank App</title>
+    <script>
+        
+        function cancel()
+        {
+            window.location.href="login2.html"
+        }
+        function bankoperation()
+        {
+            var balance=Number(document.getElementById('balance').value);
+            document.getElementById('submit').onclick= function()
+        {
+            var uname= document.getElementsByName('uname').value;
+            
+            var output=document.getElementById("output")
+            var accountno=1111
+            if(document.getElementById('createacc').checked == true) 
+            {   
+                if(balance>=1000)
+                {
+                document.getElementById("output").innerHTML="Welcome "+uname
+                output.innerHTML="Account is created successfully. Your account no is 1111"
+                }
+                else
+                {
+                output.innerHTML="Min amount to open account is 1000. Please try again"
+                }
+            } 
+            else if(document.getElementById('creditamount').checked == true)
+            {  
+            var newaccno=prompt("enter your account number=")
+            var  amount1=Number(document.getElementById('balance').value);
+                if(accountno==newaccno)
+                {
+                    balance=balance+amount1
+                    output.innerHTML="Amount credited successfully"+balance   
+                }
+                else
+                {
+                    output.innerHTML="Please enter correct account number"
+                }
+            }
+            else if(document.getElementById('debitamount').checked == true)
+            {  
+            var newaccno=prompt("enter your account number=")
+            var  amount2=Number(document.getElementById('balance').value);
+                if(accountno==newaccno)
+                {
+                    balance=balance-amount2
+                    output.innerHTML="Amount debited successfully"+balance   
+                }
+                else
+                {
+                    output.innerHTML="Please enter correct account number"
+                }
+            }
+            else if(document.getElementById('showbalance').checked == true)
+            {  
+            var newaccno=prompt("enter your account number=")
+                if(accountno==newaccno)
+                {
+                    output.innerHTML="Your current Balance is="+balance   
+                }
+                else
+                {
+                    output.innerHTML="Please enter correct account number"
+                }
+            }
+              
+        }
+        }
+    </script>
+</head>
+<body>
+    <fieldset>
+        <legend>My Bank Services</legend>
+        <label>Enter Your Name</label>
+        <input type="text" id="uname">
+        <br>
+        <label>Enter Amount</label>
+        <input type="number" id="balance">
+        <p>Choose your option:</p>
+        <input type="radio" id="createacc" name="bankoption" value="createacc">
+        <label for="createacc">Create Account</label><br>
+        <input type="radio" id="creditamount" name="bankoption" value="creditamount">
+        <label for="creditamount">Credit Amount</label><br>
+        <input type="radio" id="debitamount" name="bankoption" value="debitamount">
+        <label for="debitamount">Debit Amount</label>
+        <br>
+        <input type="radio" id="showbalance" name="bankoption" value="showbalance">
+        <label for="showbalance">Show Balance</label>
+        <br>
+        <input type="submit"  id="submit" value ="OK"  onclick="bankoperation()">
+        <button id="cancel" onclick="cancel()">Cancel</button>
+        <br><br>
+        <h2 id="output"></h2>
+    </fieldset>
+</body>
+</html>
